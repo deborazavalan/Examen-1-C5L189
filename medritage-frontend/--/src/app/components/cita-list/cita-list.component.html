@@ -1,0 +1,38 @@
+<h2>Citas</h2>
+
+<div>
+  @for (f of filtros; track f) {
+    <button (click)="cambiarFiltro(f)">{{ f }}</button>
+  }
+</div>
+
+<div class="tabla">
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Paciente</th>
+        <th>Doctor</th>
+        <th>Prioridad</th>
+        <th>Motivo</th>
+        <th>Estado</th>
+        <th>Monto</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (c of citasFiltradas(); track c.id) {
+        <tr>
+          <td>{{ c.codigoCita }}</td>
+          <td>{{ c.nombrePaciente }}</td>
+          <td>{{ c.nombreDoctor }}</td>
+          <td>{{ c.nivelPrioridad }}</td>
+          <td>{{ c.motivoConsulta }}</td>
+          <td><span class="badge {{ c.estado }}">{{ c.estado }}</span></td>
+          <td>{{ c.montoConsulta }}</td>
+          <td><button (click)="avanzarEstado(c)">Avanzar estado</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
